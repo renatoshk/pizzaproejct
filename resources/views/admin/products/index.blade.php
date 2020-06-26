@@ -21,7 +21,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-              <a href="{{route('add.create')}}" class="btn btn-success" style="float: right;">Add Property </a>
+              <a href="{{route('products.create')}}" class="btn btn-success" style="float: right;">Add Product </a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -40,13 +40,13 @@
               <table id="categories" class="table table-bordered table-striped">
                 <thead>
                  <tr>
-                    <th scope="col">Property Name</th>
-                    <th scope="col">Property User</th>
-                    <th scope="col">Property Description</th>
-                    <th scope="col">Property Status</th>
-                    <th scope="col">Property Type</th>
-                    <th scope="col">Property Price</th>
-                    <th scope="col">Property Location</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Product Photo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Status</th>
                     <th scope="col">View</th>
                     <th scope="col">Edit</th> 
                     <th scope="col">Delete</th>
@@ -56,18 +56,18 @@
                 @if($data)
                  @foreach($data as $prop) 
               <tr>
-                  <td>{{$prop['property_name']}}</td>
-                  <td>{{$prop['name_user']}}</td>
-                  <td>{{$prop['property_description']}}</td>
-                  <td>{{$prop['status']}}</td>
                   <td>{{$prop['type']}}</td>
-                  <td>{{$prop['price']}}</td>
-                  <td>{{$prop['location']}}</td>
-                  <td><a href="{{route('add.show',$prop['id'])}}">View Property</a></td> 
-                  <td><a href="{{route('add.edit', $prop['id'])}}">Edit</a></td>
+                  <td><img src="/product_photos/{{$prop['photo']}}" style="width: 100px; height: 100px;" alt=""></td>
+                  <td>{{$prop['name']}}</td>
+                  <td>{{$prop['description']}}</td>
+                  <td>${{$prop['price']}}</td>
+                  <td>{{$prop['qty']}}</td>
+                  <td>{{$prop['status']}}</td>
+                  <td><a href="{{-- {{route('add.show',$prop['id'])}} --}}">View Product</a></td> 
+                  <td><a href="{{route('products.edit', $prop['id'])}}">Edit</a></td>
                   <td>
                   
-                {!!Form::open(['method'=>'DELETE', 'action'=>['AddPropertyController@destroy', $prop['id']]])!!}
+                {!!Form::open(['method'=>'DELETE', 'action'=>['AdminProductController@destroy', $prop['id']]])!!}
                      {!!Form::submit('Delete', ['class'=>'btn btn-danger'])!!} 
                 {!!Form::close()!!}
                 </td>

@@ -42,6 +42,11 @@ Route::group(['middleware'=>'admin'], function(){
   Route::get('/adm', 'AdminController@index');
   Route::resource('/attributes_set', 'AdminAttributeSetController');
   Route::resource('/attributes', 'AdminAttributeController');
+  Route::resource('/products', 'AdminProductController');
+  Route::get('ajax', function(){
+         return view('ajax'); 
+  });
+  Route::post('/postajax','AjaxController@post');
 });
 
 

@@ -81,6 +81,31 @@
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{asset('admin/custom/index.js')}}"></script>
+    <script>
+  $(document).ready(function(){
+       var CSRF_TOKEN = $('input[name="_token"]').val();
+       $('#attr_group_select').children('select').on('change', function(event){
+             $.ajax({
+
+               url: '/postajax',
+               type: 'POST',
+
+               data: {_token: CSRF_TOKEN, attr_group_id:$(this).val()},
+               dataType:'JSON',
+
+               success: function(data){
+                $(data.content).insertAfter('#file_upload');
+               }
+             });
+           var prop_attr =  $('#attr_group_select').children('select').on('change', function(event){
+                if(prop_attr){
+                  $('.prop_attr').remove();
+                }
+           });
+       });
+  });
+  
+</script>
 
 </body>
 
