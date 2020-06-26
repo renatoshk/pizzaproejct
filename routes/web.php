@@ -41,6 +41,7 @@ Route::get('/cart', function () {
 Route::group(['middleware'=>'admin'], function(){
   Route::get('/adm', 'AdminController@index');
   Route::resource('/attributes_set', 'AdminAttributeSetController');
+  Route::resource('/attributes', 'AdminAttributeController');
 });
 
 

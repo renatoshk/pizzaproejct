@@ -19,7 +19,7 @@
     </section>
 @if ( Session::has('flash_message') )
   <div class="alert {{ Session::get('flash_type', 'alert-info') }}">
-      <h3>{{ Session::get('flash_message') }} <a href="{{route('attribute.index')}}">Click here to see it!</a></h3>
+      <h3>{{ Session::get('flash_message') }} <a href="{{route('attributes.index')}}">Click here to see it!</a></h3>
   </div>
 @endif
     <!-- Content Header (Page header) -->
@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-              <a href="{{route('attribute.create')}}" class="btn btn-success" style="float: right;">Add Attribute</a>
+              <a href="{{route('attributes.create')}}" class="btn btn-success" style="float: right;">Add Attribute</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -38,7 +38,7 @@
 <div class="col-sm-6">
 {!!Form::model($attribute, ['method'=>'PATCH', 'action'=>['AdminAttributeController@update', $attribute->id]]) !!}
 <div class="form-group">
-  {!!Form::select('attribute_id', [''=>'Choose Attribute Set']+$attribute_groups, null, ['class'=>'form-control'])!!}
+  {!!Form::select('attribute_id', $attribute_groups, null, ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     <br>

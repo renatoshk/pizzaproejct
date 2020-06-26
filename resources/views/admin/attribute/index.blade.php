@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-              <a href="{{route('attribute.create')}}" class="btn btn-success" style="float: right;">Add Attribute </a>
+              <a href="{{route('attributes.create')}}" class="btn btn-success" style="float: right;">Add Attribute </a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -62,13 +62,13 @@
                  @foreach($attributes as $attribute)
               <tr>
                   <td>{{$attribute->id}}</td>
-                  <td>{{$attribute->attribute_group->name}}</td>
+                  <td>{{$attribute->attribute_set->name}}</td>
                   <td>{{$attribute->type}}</td>
                   <td>{{$attribute->label}}</td>
                   <td>{{$attribute->attr_code}}</td>
                   <td>{{$attribute->created_at ? $attribute->created_at->diffForHumans() : 'No data' }}</td>
                   <td>{{$attribute->updated_at ? $attribute->updated_at->diffForHumans() : 'No data' }}</td>
-                  <td><a href="{{route('attribute.edit', $attribute->id)}}">Edit</a></td>
+                  <td><a href="{{route('attributes.edit', $attribute->id)}}">Edit</a></td>
                   <td>
                   
                 {!!Form::open(['method'=>'DELETE', 'action'=>['AdminAttributeController@destroy', $attribute->id]])!!}

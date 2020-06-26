@@ -20,7 +20,7 @@
 <br>
 @if ( Session::has('flash_message') )
   <div class="alert {{ Session::get('flash_type', 'alert-info') }}">
-      <h3>{{ Session::get('flash_message') }}<a href="{{route('attribute.index')}}">Click here to see it!</a></h3>
+      <h3>{{ Session::get('flash_message') }}<a href="{{route('attributes.index')}}">Click here to see it!</a></h3>
   </div>
 @endif
 <br>
@@ -28,7 +28,7 @@
 <div class="col-sm-10">
 {!!Form::open(['method'=>'POST', 'action'=>'AdminAttributeController@store']) !!}
 <div class="form-group">
-  {!!Form::select('attribute_id', [''=>'Choose Attribute Set']+$attribute_groups, null, ['class'=>'form-control'])!!}
+  {!!Form::select('attribute_set_id', [''=>'Choose Attribute Set']+$attribute_groups, null, ['class'=>'form-control'])!!}
 </div>
 <div class="form-group">
     <br>
