@@ -1,7 +1,11 @@
 @extends('layouts.web.index')
 @section('content')
     <!-- END nav -->
-
+@if ( Session::has('flash_message') )
+       <div class="alert {{ Session::get('flash_type', 'bg-black') }}">
+      <h3>{{ Session::get('flash_message') }}</h3>
+       </div>
+@endif
     <section class="home-slider owl-carousel img" style="background-image: url(web/images/pizza2.jpg);">
       <div class="slider-item">
       	<div class="overlay"></div> 

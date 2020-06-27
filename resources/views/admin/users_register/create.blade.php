@@ -13,7 +13,7 @@
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Users</li>
             </ol>
-          </div>
+          </div> 
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -27,14 +27,6 @@
 <div class="col-sm-10">
 	{!!Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>'true']) !!}
 	<div class="form-group">
-		{!!Form::label('Name', 'Name:')!!}
-	    {!!Form::text('name', null, ['class'=>'form-control'])!!}
-	</div>
-	<div class="form-group">
-		{!!Form::label('Surname', 'Surname:')!!}
-	    {!!Form::text('surname', null, ['class'=>'form-control'])!!}
-	</div>
-	<div class="form-group">
 		{!!Form::label('Username', 'Username:')!!}
 	    {!!Form::text('username', null, ['class'=>'form-control'])!!}
 	</div>
@@ -44,17 +36,8 @@
 		
 	</div>
 	<div class="form-group">
-		{!!Form::label('Phone Number', 'Phone Number:')!!}
-		{!!Form::text('phone_number',null, ['class'=>'form-control'] )!!}
-		
-	</div>
-	<div class="form-group">
 		{!!Form::label('Role', 'Role:')!!}
 		{!!Form::select('role_id', [''=>'Choose Options']+$roles, null, ['class'=>'form-control'])!!}
-	</div>
-	<div class="form-group">
-	     {!!Form::label('is_active', 'Status:')!!}
-	     {!!Form::select('is_active', array(time() => 'Active', NULL => 'Not active'),0, ['class'=>'form-control'])!!}
 	</div>
 	<div class="form-group">
 	     {!!Form::label('password', 'Password:')!!}

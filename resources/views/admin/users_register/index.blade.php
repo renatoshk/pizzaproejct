@@ -48,12 +48,9 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Surname</th>
       <th scope="col">Username</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
-      <th scope="col">Phone Number</th>
       <th scope="col">Status</th>
       <th scope="col">Created_at</th>
       <th scope="col">Updated_at</th>
@@ -68,12 +65,9 @@
     @foreach($users as $user)	
     <tr>
       <td>{{$user->id}}</td>
-      <td>{{$user->name}}</td>
-      <td>{{$user->surname}}</td>
       <td><a style="color: black" href="{{route('users.edit', $user->id)}}">{{$user->username}}</a></td>
       <td>{{$user->email}}</td>
-      <td>{{$user->role->role}}</td>
-      <td>{{$user->phone_number}}</td>
+      <td>{{$user->role->name}}</td>
       <td>{{$user->email_verified_at  ? 'active' : 'No Active'}}</td>
       <td>{{$user->created_at ? $user->created_at->diffForHumans() : 'No data'}}</td>
       <td>{{$user->updated_at ? $user->updated_at->diffForHumans() : 'No data'}}</td>

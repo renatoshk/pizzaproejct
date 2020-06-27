@@ -14,9 +14,9 @@
       <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
       <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
     @if(Auth::user())
-      <li class="nav-item"><a href="" class="nav-link">My Profile</a></li>
+      <li class="nav-item"><a href="{{route('profile.index')}}" class="nav-link">My Profile</a></li>
         <li class="nav-item">
-          <a class="nav-link" style="color:white" href="{{route('logout')}}" onclick="event.preventDefault();
+          <a class="nav-link"  href="{{route('logout')}}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             {{ __('Logout')}}
            </a>

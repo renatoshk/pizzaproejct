@@ -168,6 +168,7 @@ class AdminProductController extends Controller
         $user = Auth::user();
         if($user){
               $data = $request->all();
+              //if form has image
            if($file = $request->file('photo_id')){
               $name = time(). $file->getClientOriginalName();
               $file->move('product_photos', $name);
@@ -183,6 +184,7 @@ class AdminProductController extends Controller
             
               ]);
            }
+           //if form doesnt have image
            else {
                 $product = $user->products()->findOrFail($id)->update([
                    'name'=>$data['name'],

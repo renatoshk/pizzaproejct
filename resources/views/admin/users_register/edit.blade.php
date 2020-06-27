@@ -9,7 +9,7 @@
             <h1>Edit User</h1>
           </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-sm-right"> 
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Users</li>
             </ol>
@@ -26,14 +26,6 @@
     <br>
 <div class="col-sm-10">	
 		{!!Form::model($user, ['method'=>'PATCH' , 'action'=>['AdminUsersController@update', $user->id], 'files'=>true])!!}
-		   <div class="form-group">
-				{!!Form::label('Name', 'Name:')!!}
-			    {!!Form::text('name', null, ['class'=>'form-control'])!!}
-			</div>
-			<div class="form-group">
-				{!!Form::label('Surname', 'Surname:')!!}
-			    {!!Form::text('surname', null, ['class'=>'form-control'])!!}
-			</div>
 			<div class="form-group">
 				{!!Form::label('Username', 'Username:')!!}
 			    {!!Form::text('username', null, ['class'=>'form-control'])!!}
@@ -43,19 +35,10 @@
 				{!!Form::email('email',null, ['class'=>'form-control'] )!!}
 				
 			</div>
-		   <div class="form-group">
-				{!!Form::label('Phone Number', 'phonenumber:')!!}
-			    {!!Form::text('phone_number', null, ['class'=>'form-control'])!!}
-			</div>
 			<div class="form-group">
 				{!!Form::label('Role', 'Role:')!!}
 				{!!Form::select('role_id', [''=>'Choose Options']+$roles, null, ['class'=>'form-control'])!!}
 			</div>
-			<div class="form-group">
-			     {!!Form::label('is_active', 'Status:')!!}
-			     {!!Form::select('is_active', array(0=> 'Active', NULL=> 'Not active'),null, ['class'=>'form-control'])!!}
-			</div>
-			
 			<div class="form-group">
 				{!!Form::submit('Update User', ['class'=>'btn btn-primary'])!!}
 			</div>

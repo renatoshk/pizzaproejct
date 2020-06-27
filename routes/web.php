@@ -37,18 +37,21 @@ Route::get('/blog', function () {
 Route::get('/cart', function () {
     return view('web.cart');
 });
-
+//admin
 Route::group(['middleware'=>'admin'], function(){
   Route::get('/adm', 'AdminController@index');
   Route::resource('/attributes_set', 'AdminAttributeSetController');
   Route::resource('/attributes', 'AdminAttributeController');
   Route::resource('/products', 'AdminProductController');
+  Route::resource('/users', 'AdminUsersController');
   Route::get('ajax', function(){
          return view('ajax'); 
   });
   Route::post('/postajax','AjaxController@post');
 });
-
+//web
+Route::resource('/profile', 'ProfileController');
+Route::resource('/changepassword', 'ChangePasswordController');
 
 Auth::routes();
 
