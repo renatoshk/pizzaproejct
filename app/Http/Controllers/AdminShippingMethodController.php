@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Shipping_method;
+use App\Http\Requests\ShippingMethodRequest;
 use Illuminate\Support\Facades\Session;
-use App\User;
-use App\Http\Requests\ChangePasswordRequest;
-use Illuminate\Support\Facades\Hash;
-class ChangePasswordController extends Controller
+class AdminShippingMethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +16,9 @@ class ChangePasswordController extends Controller
     public function index()
     {
         //
-        $user = Auth::user();
-        if($user){
-            return view('web.profile.changepassword', compact('user'));
-        }
-        else {
-            return redirect('/');
-        }
-    }
+        $shippings_method = Shipping_method::all();
+        return view('admin.shippings_method.index', compact('shippings_method'));
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -35,6 +28,8 @@ class ChangePasswordController extends Controller
     public function create()
     {
         //
+        $shipping = Shipping_method::all();
+        return view('admin.shippings_method.create', compact('shipping'));
     }
 
     /**
@@ -43,9 +38,13 @@ class ChangePasswordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShippingMethodRequest $request)
     {
         //
+        $input = $request->all();
+        Shipping_method::create($input);
+        Session::flash('flash_message', 'The Shipping Method has been created!');
+        return redirect()->back();
     }
 
     /**
@@ -68,6 +67,8 @@ class ChangePasswordController extends Controller
     public function edit($id)
     {
         //
+        $shippings_edit = Shipping_method::findOrFail($id);
+        return view('admin.shippings_method.edit', compact('shippings_edit'));
     }
 
     /**
@@ -77,22 +78,14 @@ class ChangePasswordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChangePasswordRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        // 
-        $hashedPassword = Auth::user()->password;
-        if(Hash::check($request->oldpassword,  $hashedPassword)){
-            $user = Auth::user();
-            $user->password = Hash::make($request->password);
-            $user->save();
-            Auth::logout();
-            Session::flash('flash_message', 'Your password is changed! Login with your new password');
-            return redirect('/');
-        }
-        ession::flash('flash_message', 'Your password is not changed!Try again!');
+        //
+        $shipping = Shipping_method::findOrFail($id);
+        $input = $request->all();
+        $shipping->update($input);
+        Session::flash('flash_message', 'The Shipping Method has been updated!');
         return redirect()->back();
-
-
     }
 
     /**
@@ -104,5 +97,8 @@ class ChangePasswordController extends Controller
     public function destroy($id)
     {
         //
+        $shipping = Shipping_method::findOrFail($id)->delete();
+        Session::flash('flash_message', 'The Shipping Method has been deleted!');
+        return redirect()->back();
     }
 }

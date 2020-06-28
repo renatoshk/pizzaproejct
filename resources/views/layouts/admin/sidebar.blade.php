@@ -65,7 +65,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('purchase')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Purchased Orders</p>
                             </a>
@@ -73,7 +73,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('orders.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pending Orders</p>
                             </a>
@@ -118,7 +118,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('shipping.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Shipping Customer</p>
                             </a>
@@ -126,7 +126,7 @@
                     </ul>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('payments.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customers Payments</p>
                             </a>
@@ -180,9 +180,9 @@
                     </ul>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route('shippings.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Shipping</p>
+                                <p>Shipping Method</p>
                             </a>
                         </li>
                     </ul>

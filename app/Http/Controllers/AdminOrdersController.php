@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Attribute_set;
+use App\Attribute;
+use App\Product_image;
+use App\Product_attribute;
 use Illuminate\Support\Facades\Session;
-use App\User;
-use App\Http\Requests\ChangePasswordRequest;
-use Illuminate\Support\Facades\Hash;
-class ChangePasswordController extends Controller
+use App\Product;
+use App\Order;
+class AdminOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +20,12 @@ class ChangePasswordController extends Controller
      */
     public function index()
     {
-        //
-        $user = Auth::user();
-        if($user){
-            return view('web.profile.changepassword', compact('user'));
-        }
-        else {
-            return redirect('/');
-        }
+       $orders = Order::orderBy('created_at')->where('status', 'none')->get();
+       return view('admin.orders.index', compact('orders'));
+    }
+    public function purchase_orders(){
+        $orders = Order::orderBy('created_at')->where('status', 'purchase')->get();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -77,22 +78,9 @@ class ChangePasswordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ChangePasswordRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        // 
-        $hashedPassword = Auth::user()->password;
-        if(Hash::check($request->oldpassword,  $hashedPassword)){
-            $user = Auth::user();
-            $user->password = Hash::make($request->password);
-            $user->save();
-            Auth::logout();
-            Session::flash('flash_message', 'Your password is changed! Login with your new password');
-            return redirect('/');
-        }
-        ession::flash('flash_message', 'Your password is not changed!Try again!');
-        return redirect()->back();
-
-
+        //
     }
 
     /**
@@ -104,5 +92,8 @@ class ChangePasswordController extends Controller
     public function destroy($id)
     {
         //
+        $order = Order::findOrFail();
+        $order->delete();
+        return redirect()->back();
     }
 }

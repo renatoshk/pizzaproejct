@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 | 
 */
 
-Route::get('/home', function () {
-    return view('web.index');
-});
-Route::get('/', function () {
-    return view('web.index');
-});
+Route::resource('/', 'ProductController');
 Route::get('/about', function () {
     return view('web.about');
 });
@@ -44,6 +39,11 @@ Route::group(['middleware'=>'admin'], function(){
   Route::resource('/attributes', 'AdminAttributeController');
   Route::resource('/products', 'AdminProductController');
   Route::resource('/users', 'AdminUsersController');
+  Route::resource('/orders', 'AdminOrdersController');
+  Route::get('/adm/purchase_orders/','AdminOrdersController@purchase_orders')->name('purchase');
+  Route::resource('/shippings', 'AdminShippingMethodController');
+  Route::resource('/shipping', 'AdminShippingController');
+  Route::resource('/payments', 'AdminPaymentController');
   Route::get('ajax', function(){
          return view('ajax'); 
   });

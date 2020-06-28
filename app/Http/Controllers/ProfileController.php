@@ -73,7 +73,7 @@ class ProfileController extends Controller
                return view('web.profile.edit', compact('user'));
              }
              else {
-               return  redirect('/home');
+               return  redirect('/');
              }
          }
          else {
