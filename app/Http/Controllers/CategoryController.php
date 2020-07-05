@@ -1,15 +1,14 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Product;
 use App\Category;
-use App\Product_image;
-use App\Product_attribute;
-use App\Attribute_set;
-use App\Attribute;
-use Illuminate\Support\Facades\Auth;
+use App\Product;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\EditCategoryRequest;
 use Illuminate\Support\Facades\Session;
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +16,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
+    {
         //
-        $products = Product::all(); 
         $categories = Category::all();
-        //attribute set pizza
-        $data = [];
-      foreach ($categories as $category) {
-          $prods = Product::where('category_id', $category->id)->get();
-          $data[] = $prods;
-      }
-        return view('web.index', compact('products', 'data', 'categories'));
+       return view('admin.categories.index', compact('categories')); 
     }
 
     /**
@@ -38,6 +30,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+         return view('admin.categories.create'); 
     }
 
     /**
@@ -46,9 +39,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         //
+        $data = $request->all();
+        if($data){
+            Category::create($data);
+            Session::flash('flash_message', 'Category has been created');
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -60,26 +60,6 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        $user = Auth::user();
-       if($user){
-        $product = Product::findOrFail($id);
-        //attrs set
-        $attr_set_id = $product->product_attributes[0]['attribute_set_id'];
-        $attr_set = Attribute_set::where('id', $attr_set_id)->first()->name;
-        //attrs
-        $attrs_id = $product->product_attributes;
-        $condition = [];
-            foreach ($attrs_id as $attr_id){
-                $attr_id = $attr_id->attribute_id; 
-            // dd($attr_id);
-                $condition[] = Attribute::where('id', $attr_id)->where('attribute_set_id',$attr_set_id)->get();
-            }
-        return view('web.order', compact('product', 'attr_set', 'condition'));
-       }
-       else {
-          Session::flash('flash_message', 'You need to login to continue shopping!');
-          return redirect('/');
-       } 
     }
 
     /**
@@ -91,6 +71,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+           $category = Category::findOrFail($id);
+           return view('admin.categories.edit', compact('category')); 
     }
 
     /**
@@ -100,9 +82,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditCategoryRequest $request, $id)
     {
         //
+        $data = $request->all();
+        $category = Category::findOrFail($id);
+        if($category && $data){
+            $category->update($data);
+            Session::flash('flash_message', 'Category has been updated');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -114,5 +103,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        $category = Category::findOrFail($id);
+        if($category){
+            $category->delete();
+            Session::flash('flash_message', 'Category has been deleted');
+            return redirect()->back();
+        }
     }
 }

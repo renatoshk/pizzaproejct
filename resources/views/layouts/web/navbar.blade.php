@@ -24,6 +24,12 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
+       <li  class="nav-item">
+           <a class="nav-link" href="/cart">
+            <i class="fa fa-shopping-cart"></i> Cart
+            <span class="badge badge-light"><?php $orders = App\Order::where('status','none')->get(); echo count($orders); ?></span>
+         </a>
+       </li> 
     @endif 
     @if(Auth::guest())
       <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Sign In</a></li>

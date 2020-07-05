@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('product_id')->unsigned()->index()->nullable();
             $table->string('status')->default('none');
             $table->integer('qty');
+            $table->string('size')->default('small');
             $table->float('total_price');
             $table->timestamps();
         });

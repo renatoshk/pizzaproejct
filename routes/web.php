@@ -12,25 +12,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 | 
 */
-
+//web
 Route::resource('/', 'ProductController');
+Route::resource('/product', 'ProductController');
+Route::resource('/order', 'OrderController');
+Route::resource('/profile', 'ProfileController');
+Route::resource('/changepassword', 'ChangePasswordController');
+Route::get('/cart', 'OrderController@cart')->name('cart'); 
+Route::get('/menu', 'OrderController@menu')->name('menu'); 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function () {
     return view('web.about');
 });
 Route::get('/services', function () {
     return view('web.services');
 });
-Route::get('/menu', function () {
-    return view('web.menu');
-});
+
 Route::get('/contact', function () {
     return view('web.contact');
 });
 Route::get('/blog', function () {
     return view('web.blog');
-});
-Route::get('/cart', function () {
-    return view('web.cart');
 });
 //admin
 Route::group(['middleware'=>'admin'], function(){
@@ -44,15 +47,9 @@ Route::group(['middleware'=>'admin'], function(){
   Route::resource('/shippings', 'AdminShippingMethodController');
   Route::resource('/shipping', 'AdminShippingController');
   Route::resource('/payments', 'AdminPaymentController');
+  Route::resource('/categories', 'CategoryController');
   Route::get('ajax', function(){
          return view('ajax'); 
   });
   Route::post('/postajax','AjaxController@post');
 });
-//web
-Route::resource('/profile', 'ProfileController');
-Route::resource('/changepassword', 'ChangePasswordController');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

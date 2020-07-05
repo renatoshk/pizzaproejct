@@ -6,7 +6,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>My Properties </h1>
+            <h1>Categories</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Categories</li>
+            </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -21,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-              <a href="{{route('products.create')}}" class="btn btn-success" style="float: right;">Add Product </a>
+              <a href="{{route('categories.create')}}" class="btn btn-success" style="float: right;">Add Category</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -33,49 +39,37 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">All My Properties </h3>
+              <h3 class="card-title">Categories</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="categories" class="table table-bordered table-striped">
                 <thead>
                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Product Photo</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Edit</th> 
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">CREATED_AT</th>
+                    <th scope="col">UPDATED_AT</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
-                <tbody> 
-                @if($data)
-                 @foreach($data as $prop) 
+                <tbody>
+                @if($categories)
+                 @foreach($categories as $category)
               <tr>
-                  <td>{{$prop['id']}}</td>
-                  <td>{{$prop['category']}}</td>
-                  <td>{{$prop['type']}}</td>
-                  <td><img src="/product_photos/{{$prop['photo']}}" style="width: 100px; height: 100px;" alt=""></td>
-                  <td>{{$prop['name']}}</td>
-                  <td>{{$prop['description']}}</td>
-                  <td>${{$prop['price']}}</td>
-                  <td>{{$prop['qty']}}</td>
-                  <td>{{$prop['status']}}</td>
-                  <td><a href="{{-- {{route('add.show',$prop['id'])}} --}}">View Product</a></td> 
-                  <td><a href="{{route('products.edit', $prop['id'])}}">Edit</a></td>
-                  <td>
+                <td>{{$category->id}}</td>
+                <td>{{$category->name}}</td>
+                <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'No data' }}</td>
+                <td>{{$category->updated_at ? $category->updated_at->diffForHumans() : 'No data' }}</td>
+                <td><a href="{{route('categories.edit', $category->id)}}">Edit</a></td>
+                <td>
                   
-                {!!Form::open(['method'=>'DELETE', 'action'=>['AdminProductController@destroy', $prop['id']]])!!}
+                {!!Form::open(['method'=>'DELETE', 'action'=>['CategoryController@destroy', $category->id]])!!}
                      {!!Form::submit('Delete', ['class'=>'btn btn-danger'])!!} 
                 {!!Form::close()!!}
                 </td>
-              </tr>
+                  </tr>
                  @endforeach 
                 @endif
                 </tbody>

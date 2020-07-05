@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\AdminProductRequest;
 use App\Http\Requests\EditAdminProductRequest;
 use App\Product;
+use App\Category;
 class AdminProductController extends Controller
 {
     /**
@@ -29,8 +30,10 @@ class AdminProductController extends Controller
         $products = Product::all();
         foreach ($products as $product) {
             $attr_set = $product->product_attributes[0]['attribute_set_id'];
+           if($attr_set){
             $type = Attribute_set::where('id', $attr_set)->first()->name;
             $row['type'] = $type;
+            $row['category'] = $product->category->name;
             $row['id'] = $product->id;
             $row['name']= $product->name;
             $row['description'] = $product->description;
@@ -40,6 +43,7 @@ class AdminProductController extends Controller
             $row['photo'] = $product->photo->product_image;
             $data[] = $row;
             $row =[];
+           } 
         }
        
         return view('admin.products.index', compact('data'));
@@ -58,7 +62,8 @@ class AdminProductController extends Controller
        $user = Auth::user();
        if($user){
         $attributes_set = Attribute_set::pluck('name','id')->all();
-        return view('admin.products.create',compact('attributes_set'));
+        $categories = Category::pluck('name','id')->all();
+        return view('admin.products.create',compact('attributes_set', 'categories'));
       }
     }
 
@@ -82,12 +87,14 @@ class AdminProductController extends Controller
             }
             //product static add
             $product = $user->products()->create([
+                    'category_id'=>$data['category_id'],
                     'name'=>$data['name'],
                     'description'=>$data['description'],
                     'price'=>$data['price'],
                     'qty'=>$data['qty'],
                     'photo_id' => $photo->id
             ]);
+            unset($data['category_id']);
             unset($data['name']);
             unset($data['description']);
             unset($data['price']);

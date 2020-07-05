@@ -13,13 +13,10 @@
             	<h1 class="mb-3 mt-5 bread">Services</h1>
 	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Services</span></p>
             </div>
-
           </div>
         </div>
       </div>
     </section>
-    
-
     <section class="ftco-section ftco-services">
     	<div class="overlay"></div>
     	<div class="container">
@@ -27,9 +24,9 @@
           <div class="col-md-7 heading-section ftco-animate text-center">
             <h2 class="mb-4">The Vintage Promise</h2>
             <p>
-                    We only use the best cheese and fresh dough made on the premises daily. For our sauce, we use only fresh, whole plum tomatoes and the best spices available. We work hard to meet your needs and wants.
-                  Thank you for your support,
-                     Vintage Pizza
+                We only use the best cheese and fresh dough made on the premises daily. For our sauce, we use only fresh, whole plum tomatoes and the best spices available. We work hard to meet your needs and wants.
+              Thank you for your support,
+                 Vintage Pizza
           </p>
           </div>
         </div>
@@ -66,64 +63,6 @@
             </div>    
           </div>
         </div>
-    	</div>
-    </section>
-
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Hot Meals</h2>
-            <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-            <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-3 text-center ftco-animate">
-      			<div class="menu-wrap">
-      				<a href="#" class="menu-img img mb-4" style="background-image: url(web/images/pizza-1.jpg);"></a>
-      				<div class="text">
-      					<h3><a href="#">Itallian Pizza</a></h3>
-      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-      					<p class="price"><span>$2.90</span></p>
-      					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-      				</div>
-      			</div>
-      		</div>
-      		<div class="col-md-3 text-center ftco-animate">
-      			<div class="menu-wrap">
-      				<a href="#" class="menu-img img mb-4" style="background-image: url(web/images/pizza-2.jpg);"></a>
-      				<div class="text">
-      					<h3><a href="#">Itallian Pizza</a></h3>
-      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-      					<p class="price"><span>$2.90</span></p>
-      					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-      				</div>
-      			</div>
-      		</div>
-      		<div class="col-md-3 text-center ftco-animate">
-      			<div class="menu-wrap">
-      				<a href="#" class="menu-img img mb-4" style="background-image: url(web/images/pizza-3.jpg);"></a>
-      				<div class="text">
-      					<h3><a href="#">Itallian Pizza</a></h3>
-      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-      					<p class="price"><span>$2.90</span></p>
-      					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-      				</div>
-      			</div>
-      		</div>
-      		<div class="col-md-3 text-center ftco-animate">
-      			<div class="menu-wrap">
-      				<a href="#" class="menu-img img mb-4" style="background-image: url(web/images/pizza-4.jpg);"></a>
-      				<div class="text">
-      					<h3><a href="#">Itallian Pizza</a></h3>
-      					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-      					<p class="price"><span>$2.90</span></p>
-      					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-      				</div>
-      			</div>
-      		</div>
-    		</div>
     	</div>
     </section>
 @stop

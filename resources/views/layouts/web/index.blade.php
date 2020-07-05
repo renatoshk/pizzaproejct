@@ -1,17 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>VintagePizza</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="{{asset('web/css/open-iconic-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/animate.css')}}">
-    
     <link rel="stylesheet" href="{{asset('web/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/magnific-popup.css')}}">
@@ -24,9 +22,13 @@
     <link rel="stylesheet" href="{{asset('web/css/jquery.timepicker.css')}}">
 
     
+    <link rel="stylesheet" href="{{asset('web/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('web/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
   </head>
   <body>
         @include('layouts.web.navbar')

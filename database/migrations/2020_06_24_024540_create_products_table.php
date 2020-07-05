@@ -17,12 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->integer('photo_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('name');
             $table->string('description');
             $table->float('price');
             $table->integer('qty');
             $table->string('status')->default('available');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

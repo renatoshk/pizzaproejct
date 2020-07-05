@@ -32,6 +32,10 @@
                     <label for="type">Product Type:</label>
                     {!!Form::select('product_type', [''=>'Choose Product  Type']+$attributes_set, null, ['class'=>'form-control'])!!}
                   </div>
+                   <div class="form-group" id="attr_group_select">
+                    <label for="type">Product Category:</label>
+                    {!!Form::select('category_id', [''=>'Choose Category']+$categories, null, ['class'=>'form-control'])!!}
+                  </div>
                   <div class="form-group">
                     <label for="product_name">Product Name:</label>
                     <input type="text" name="name" class="form-control" id="name">

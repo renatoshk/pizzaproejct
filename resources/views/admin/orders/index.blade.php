@@ -36,6 +36,7 @@
           <th scope="col">Status</th>
           <th scope="col">Quantity</th>
           <th scope="col">Total Price</th>
+          <th scope="col">Size</th>
           <th scope="col">Created_at</th>
           <th scope="col">Updated_at</th>
           <th scope="col">Delete</th>
@@ -52,6 +53,7 @@
       <td>{{$order->status}}</td>
       <td>{{$order->qty}}</td>
        <td>${{$order->total_price}}</td>
+       <td>{{$order->size ?? 'no data'}}</td>
       <td>{{$order->created_at ? $order->created_at->diffForHumans() : 'No data'}}</td>
       <td>{{$order->updated_at ? $order->updated_at->diffForHumans() : 'No data'}}</td>
       <td>

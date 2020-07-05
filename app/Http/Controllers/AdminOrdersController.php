@@ -92,7 +92,7 @@ class AdminOrdersController extends Controller
     public function destroy($id)
     {
         //
-        $order = Order::findOrFail();
+        $order = Order::findOrFail($id);
         $order->delete();
         return redirect()->back();
     }
