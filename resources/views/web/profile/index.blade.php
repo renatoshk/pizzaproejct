@@ -1,14 +1,11 @@
 @extends('layouts.web.index')
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 @section('content')
 <br>
 <br>
 <br>
 <style>
-	@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
-body
-{
-    font-family: 'Lato', 'sans-serif';
-    }
+
 .profile 
 {
     min-height: 355px;
@@ -44,49 +41,8 @@ figcaption.ratings a:hover
 {
     margin-bottom:0;
     }
-span.tags 
-{
-    background: #1abc9c;
-    border-radius: 2px;
-    color: #f5f5f5;
-    font-weight: bold;
-    padding: 2px 4px;
-    }
-.dropdown-menu 
-{
-    background-color: #34495e;    
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    width: 250px;
-    margin-left: -125px;
-    left: 50%;
-    }
-.dropdown-menu .divider 
-{
-    background:none;    
-    }
-.dropdown-menu>li>a
-{
-    color:#f5f5f5;
-    }
-.dropup .dropdown-menu 
-{
-    margin-bottom:10px;
-    }
-.dropup .dropdown-menu:before 
-{
-    content: "";
-    border-top: 10px solid #34495e;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -10px;
-    z-index: 10;
-    }
+
 </style>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <div class="content-wrapper" style="min-height: 500px;">
 <div class="container">
 	<div class="row">

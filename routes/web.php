@@ -30,8 +30,7 @@ Route::get('/about', function () {
 });
 Route::get('/services', function () {
     return view('web.services');
-});
-
+}); 
 Route::get('/contact', function () {
     return view('web.contact');
 });
