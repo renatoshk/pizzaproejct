@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->string('order_id');
             $table->string('credit_card_name');
-            $table->integer('credit_card_number');
+            $table->unsignedBigInteger('credit_card_number');
             $table->date('expiration');
             $table->integer('verification_number');
             $table->timestamps();
