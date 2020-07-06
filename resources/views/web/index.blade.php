@@ -11,7 +11,6 @@
       	<div class="overlay"></div> 
         <div class="container">
           <div class="row slider-text align-items-center" data-scrollax-parent="true">
-
             <div class="col-md-6 col-sm-12 ftco-animate">
             	<span class="subheading">Est. 2004</span>
               <h1 class="mb-4">Vintage Pizza </h1>
