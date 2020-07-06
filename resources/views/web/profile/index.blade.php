@@ -53,7 +53,6 @@ figcaption.ratings a:hover
                     <h2>{{$user->username ?? ''}}</h2>
                     <p><strong>Your Email: </strong>{{$user->email ?? ''}}</p>
                 </div>             
-               
             </div>            
             <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
