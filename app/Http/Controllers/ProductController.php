@@ -57,12 +57,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
         $user = Auth::user();
        if($user){
-        $product = Product::findOrFail($id);
+        $product = Product::findBySlugOrFail($slug);
         //attrs set
         $attr_set_id = $product->product_attributes[0]['attribute_set_id'];
         $attr_set = Attribute_set::where('id', $attr_set_id)->first()->name;

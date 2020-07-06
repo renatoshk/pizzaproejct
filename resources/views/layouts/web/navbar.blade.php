@@ -10,7 +10,6 @@
       <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
       <li class="nav-item"><a href="/menu" class="nav-link">Menu</a></li>
       <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
-      <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
       <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
       <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
     @if(Auth::user())
@@ -27,7 +26,7 @@
        <li  class="nav-item">
            <a class="nav-link" href="/cart">
             <i class="fa fa-shopping-cart"></i> Cart
-            <span class="badge badge-light"><?php $orders = App\Order::where('status','none')->get(); echo count($orders); ?></span>
+            <span class="badge badge-light"><?php  $orders = App\Order::where('user_id', Auth::user()->id)->where('status','none')->get(); echo count($orders); ?></span>
          </a>
        </li> 
     @endif 

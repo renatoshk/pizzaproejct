@@ -20,6 +20,9 @@ Route::resource('/profile', 'ProfileController');
 Route::resource('/changepassword', 'ChangePasswordController');
 Route::get('/cart', 'OrderController@cart')->name('cart'); 
 Route::get('/menu', 'OrderController@menu')->name('menu'); 
+Route::resource('/step-1', 'ShippingController');
+Route::resource('/step-2', 'PaymentController');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', function () {
@@ -31,9 +34,6 @@ Route::get('/services', function () {
 
 Route::get('/contact', function () {
     return view('web.contact');
-});
-Route::get('/blog', function () {
-    return view('web.blog');
 });
 //admin
 Route::group(['middleware'=>'admin'], function(){

@@ -172,13 +172,11 @@
     	</div>
           @if($categories)
           @foreach($categories as $category)
-    	<div class="container-wrap">
-        <br>
-          <div class="col-md-6">
-            <div class="pricing-entry d-flex ftco-animate">
-               <h1><span>{{$category->name}}</span></h1>
-            </div>
-         </div>
+          <br>
+            <br>
+             <h1 style="text-align: center"><span>{{$category->name}}</span></h1>
+            <br>
+          <br>
     		<div class="row no-gutters d-flex">
            @foreach($category->products as $product)
     			<div class="col-lg-4  d-flex ftco-animate">
@@ -187,7 +185,7 @@
     					<div class="text p-4">
     						<h3>{{$product->name ?? ''}}</h3>
     						<p>{{$product->description ?? ''}}</p>
-    						<p class="price"><span>${{$product->price ?? ''}}</span> <a href="{{route('product.show', $product->id)}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
+    						<p class="price"><span>${{$product->price ?? ''}}</span> <a href="{{route('product.show', $product->slug)}}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
     					</div>
     				</div>
     			</div>
@@ -196,8 +194,7 @@
     	</div>
           @endforeach
         @endif 
-    </section>
-
+    </section> 
     <section class="ftco-gallery">
     	<div class="container-wrap">
     		<div class="row no-gutters">
@@ -281,65 +278,7 @@
         </div>
       </div>
     </section>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Recent from blog</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('web/images/image_1.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('web/images/image_2.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('web/images/image_3.jpg');">
-              </a>
-              <div class="text py-4 d-block">
-              	<div class="meta">
-                  <div><a href="#">Sept 10, 2018</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-		
+    <br>
 		<section class="ftco-appointment">
 			<div class="overlay"></div>
     	<div class="container-wrap">
@@ -371,6 +310,7 @@
     		</div>
     	</div>
     </section>
+    <br>
     @stop
 
   

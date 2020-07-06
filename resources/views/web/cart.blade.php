@@ -131,7 +131,7 @@ footer a {
                     <button class="btn btn-block btn-light"><a style="color:black" href="/">Continue Shopping</a></button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase"><a href="">Checkout</a></button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase"><a href="{{route('step-1.index')}}">Checkout</a></button>
                 </div>
         </div>
             </div>

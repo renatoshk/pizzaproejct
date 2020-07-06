@@ -64,12 +64,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
            $user = Auth::user();
          if($user){
-             if($user->id == $id){
+             if($user->slug == $slug){
                return view('web.profile.edit', compact('user'));
              }
              else {

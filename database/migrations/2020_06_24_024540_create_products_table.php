@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('photo_id');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('name');
+            $table->string('slug');
             $table->string('description');
             $table->float('price');
             $table->integer('qty');

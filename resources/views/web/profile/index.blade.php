@@ -101,14 +101,14 @@ span.tags
             </div>            
             <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong> 0</strong></h2>                    
+                    <h2><strong><?php $orders = App\Order::where('user_id', Auth::user()->id)->where('status','purchase')->get(); echo count($orders);?></strong></h2>                    
                     <p><small>My Orders</small></p>
-                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span><a style="color:white;" href="">View Orders</a></button>
+                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span><a style="color:white;" href="/order">View Orders</a></button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong>My</strong></h2>                    
                     <p><small>Data</small></p>
-                    <button class="btn btn-info btn-block"><span class="fa fa-user"></span><a style="color:white;" href="{{route('profile.edit', $user->id)}}"> Edit Profile</a> </button>
+                    <button class="btn btn-info btn-block"><span class="fa fa-user"></span><a style="color:white;" href="{{route('profile.edit', $user->slug)}}"> Edit Profile</a> </button>
                 </div>
                  <div class="col-xs-12 col-sm-4 emphasis">
                     <h2><strong>My</strong></h2>                    

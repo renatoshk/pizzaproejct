@@ -49,7 +49,6 @@
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Status</th>
-                    <th scope="col">View</th>
                     <th scope="col">Edit</th> 
                     <th scope="col">Delete</th>
                   </tr>
@@ -63,11 +62,10 @@
                   <td>{{$prop['type']}}</td>
                   <td><img src="/product_photos/{{$prop['photo']}}" style="width: 100px; height: 100px;" alt=""></td>
                   <td>{{$prop['name']}}</td>
-                  <td>{{$prop['description']}}</td>
+                  <td>{{Str::limit($prop['description'],30)}}</td>
                   <td>${{$prop['price']}}</td>
                   <td>{{$prop['qty']}}</td>
                   <td>{{$prop['status']}}</td>
-                  <td><a href="{{-- {{route('add.show',$prop['id'])}} --}}">View Product</a></td> 
                   <td><a href="{{route('products.edit', $prop['id'])}}">Edit</a></td>
                   <td>
                   

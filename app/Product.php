@@ -3,11 +3,33 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 class Product extends Model
 {
     //
-    protected $fillable = ['photo_id','category_id', 'name', 'description','price','qty','status'];
+    use Sluggable;
+    use SluggableScopeHelpers; 
+    protected $fillable = ['photo_id','category_id', 'name','slug', 'description','price','qty','status'];
+
+    //slug
+    public function sluggable(){
+        return [
+            'slug' => [ 
+                'source' => 'name',
+                'onUpdate' => false,
+                'separator' => '-',
+                'method' => null,
+                'maxLength' => null,
+                'maxLengthKeepWords' => true,
+                'unique' => true,
+                'uniqueSuffix' => null,
+                'includeTrashed' => false,
+                'reserved' => null,
+                
+            ]
+        ];
+    }
     //users
     public function user(){
     	return $this->belongsTo('App\User','user_id');

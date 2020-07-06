@@ -78,6 +78,7 @@ class AdminProductController extends Controller
         //
         $user = Auth::user();
         $data = $request->all();
+      
         if($user){
             //image add
             if($file = $request->file('photo_id')){

@@ -21,6 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('credit_card_number');
             $table->date('expiration');
             $table->integer('verification_number');
+            $table->timestamps();
         });
     }
 

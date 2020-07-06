@@ -3,19 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\Shipping;
-use App\Payment;
-use App\Category;
-use App\Product_image;
-use App\Product_attribute;
-use App\Attribute_set;
-use App\Attribute;
-use App\Order;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-class AdminController extends Controller
+use App\Shipping;
+use App\Order;
+use App\Shipping_method;
+use App\Http\Requests\ShippRequest;
+class ShippingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,15 +19,16 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $payments = Payment::all();
-        $shippings = Shipping::all();
-        $total_price = Order::orderBy('created_at')->where('status', 'purchase')->sum('total_price');
-        $available_products = Product::where('status','available')->count();
-        $unavailable_products = Product::where('status','unavailable')->count();
-        $purchase_orders = Order::where('status','purchase')->count();
-        $cart_orders = Order::where('status','none')->count();
-        $users = User::where('role_id', '2')->count();
-        return view('admin.dashboard', compact('purchase_orders','cart_orders','users','available_products','unavailable_products','total_price', 'payments','shippings'));
+        $user = Auth::user();
+        if($user){
+            $shipping_methods = Shipping_method::all(); 
+            return view('web.shipping', compact('shipping_methods'));
+        }
+        else {
+            Session::flash('flash_message', 'You need to login to order products!');
+            return redirect('/'); 
+        }
+
     }
 
     /**
@@ -52,9 +47,32 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShippRequest $request)
     {
         //
+        $user = Auth::user();
+        if($user){
+          $orders = Order::where('user_id', $user->id)->where('status', 'none')->pluck('id')->toArray();
+          if(count($orders) > 0){
+             $data = $request->all();
+             $data['order_id'] = implode(',', $orders);
+             $user->shippings()->create($data);
+             Session::flash('flash_message', 'Your data has been successfully registered');
+             return redirect('/step-2');
+          }
+          else {
+            Session::flash('flash_message', 'Your cart is empty');
+            return redirect('/');
+          }
+        
+
+        }
+        else {
+            Session::flash('flash_message', 'You need to login');
+            return redirect('/');
+
+        }
+
     }
 
     /**

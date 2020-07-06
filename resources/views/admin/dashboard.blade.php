@@ -1,212 +1,143 @@
 @extends('layouts.admin.index')
 @section('content')
-<style>
-    html,
-body {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: navajowhite;
-}
 
-.box {
-    display: flex;
-}
- 
-.box .inner {
-    width: 400px;
-    height: 200px;
-    line-height: 200px;
-    font-size: 4em;
-    font-family: sans-serif;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.box .inner:first-child {
-    background-color: black;
-    color: white;
-    transform-origin: right;
-    transform: perspective(100px) rotateY(-15deg);
-}
-
-.box .inner:last-child {
-    background-color: white;
-    color: black;
-    transform-origin: left;
-    transform: perspective(100px) rotateY(15deg);
-}
-
-.box .inner span {
-    position: absolute;
-    animation: marquee 5s linear infinite;
-}
-
-.box .inner:first-child span {
-    animation-delay: 2.5s;
-    left: -100%;
-}
-
-@keyframes marquee {
-    from {
-        left: 100%;
-    }
-
-    to {
-        left: -100%;
-    }
-}
-</style>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+<div class="content-wrapper" style="min-height: 1200.88px;">
+   
+    <!-- Main content -->
+      <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/adm">Home</a></li>
-                        <li class="breadcrumb-item active">My Dashboard</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Admin Area</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <!-- Main content -->
-    <br>
-    <div class="box">
-          <div class="inner">
-            <span>Hello Dashboard</span>
+  <div class="container-fluid">
+   <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-pizza-slice"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Products(available)</span>
+                <span class="info-box-number">
+                  {{$available_products}}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
           </div>
-          <div class="inner">
-            <span>Hello System</span>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-white elevation-1"><i class="fas fa-pizza-slice"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Products(unavailable)</span>
+                <span class="info-box-number">
+                  {{$unavailable_products}}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-yellow elevation-1"><i class="fas fa-user"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Users</span>
+                <span class="info-box-number">{{$users}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-green elevation-1"><i class="fas fa-hand-holding-usd"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Price</span>
+                <span class="info-box-number">${{$total_price}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Sales</span>
+                <span class="info-box-number">{{$purchase_orders}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-red elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pending Orders</span>
+                <span class="info-box-number">{{$cart_orders}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-money-bill-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Payments</span>
+                <span class="info-box-number">{{count($payments)}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-black elevation-1"><i class="fas fa-car"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Shippings</span>
+                <span class="info-box-number">{{count($shippings)}}</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
           </div>
     </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-green">
-              <div class="inner">
-                <h3>22</h3>
-                  
-                <p>Properties (Rent)</p>
-              </div>
-              <div class="icon">
-               <i class="fa fa-home" aria-hidden="true"></i>
-              </div>
-              <a href="" class="small-box-footer">More info <i class="fa fa-home" aria-hidden="true"></i></a>
-            </div>
-          </div>
-             <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-red">
-              <div class="inner">
-                <h3>22</h3>
+  </div>
 
-                <p>Properties(Sale)</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-home" aria-hidden="true"></i>
-              </div>
-              <a href="22" class="small-box-footer">More info <i class="fa fa-home" aria-hidden="true"></i></a>
-            </div>
-          </div>
 
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>22</h3>
-
-                <p>Interested Clients</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person"></i>
-              </div>
-              <a href="22" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>22</h3>
-
-                <p>Admin</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-black">
-              <div class="inner">
-                <h3>22</h3>
-
-                <p>Users</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person"></i>
-              </div>
-              <a href="22" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-primary">
-              <div class="inner">
-                <h3>22</h3>
-
-                <p>Posts</p>
-              </div>
-              <div class="icon">
-                <i class="ion-ios-book"></i>
-              </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-pink">
-              <div class="inner">
-                <h3>22</h3>
-
-                <p>Comments</p>
-              </div>
-              <div class="icon">
-                <i class="ion-chatboxes"></i>
-              </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-           <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <h3>5</h3>
-
-                <p>Posts Categories</p>
-              </div>
-              <div class="icon">
-                <i class="ion-chatboxes"></i>
-              </div>
-              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-        </div>
     <!-- /.content -->
-    <br>
-    <br>
        <div class="card card-danger">
         <div class="card-header">
           <h3 class="card-title">Analyse Data</h3>
@@ -236,14 +167,13 @@ body {
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
-          'Properties(Rent)', 
-          'Properties(Sale)', 
-          'Interested Clients',
-          'Users', 
+          'Products(available)', 
+          'Order(Purchase)', 
+          'Order (Pending)',
       ],
       datasets: [
         {
-          data: ['1', '10', '11', '22'],
+          data: [{{$available_products}}, {{$purchase_orders}}, {{$cart_orders}}],
           backgroundColor : ['black', 'yellow', 'red',  'blue'],
         }
       ]

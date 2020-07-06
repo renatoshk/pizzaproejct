@@ -23,6 +23,15 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        if($user){
+            $orders = Order::where('user_id', $user->id)->where('status','purchase')->get();
+            return view('web.profile.show_orders', compact('orders'));
+        }
+        else {
+            Session::flash('flash_message', 'You need to login to view orders');
+            return redirect('/');
+        }
          
     }
 
